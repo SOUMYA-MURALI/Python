@@ -28,8 +28,8 @@ with open(csvpath, newline="") as csvfile:
     #Declare variables as empty dictionaries and lists
     row_count = 0
     candidate = []
-    uniquie_candidate = []
-    candiate_votes = []
+    unique_candidate = []
+    candidate_votes = []
     candidate_votes_percentage = []
    
     for row in csvreader:
@@ -39,7 +39,7 @@ with open(csvpath, newline="") as csvfile:
         #Here "row_count" is used to find out the total number of votes cast ie "Total Votes"
         row_count = row_count + 1
     
-    uniquie_candidate = list(set(candidate))
+    unique_candidate = list(set(candidate))
 
     #print(uniquie_candidate)
     
@@ -49,26 +49,26 @@ with open(csvpath, newline="") as csvfile:
     printing("Total Votes: " + str(row_count))
     printing("-------------------------------")
 
-    for name in uniquie_candidate:
+    for name in unique_candidate:
 
         #print(name)
         votes_per_candidate = candidate.count(name)
-        candiate_votes.append(votes_per_candidate)
+        candidate_votes.append(votes_per_candidate)
         #print(votes_per_candidate)
-        votes_percentage_per_candiate = round((votes_per_candidate/row_count) * 100,3)
-        candidate_votes_percentage.append(votes_percentage_per_candiate)
+        votes_percentage_per_candidate = round((votes_per_candidate/row_count) * 100,3)
+        candidate_votes_percentage.append(votes_percentage_per_candidate)
         #print(votes_percentage_per_candiate)
-        printing(name + ": " + str(votes_percentage_per_candiate) + "% (" + str(votes_per_candidate) + ")") 
+        printing(name + ": " + str(votes_percentage_per_candidate) + "% (" + str(votes_per_candidate) + ")") 
         
     
     #print(candiate_votes)
     #print(candidate_votes_percentage)
-    max_votes = max(candiate_votes)
-    min_votes = min(candiate_votes)
+    max_votes = max(candidate_votes)
+    min_votes = min(candidate_votes)
     #print(max_votes)
     #print(uniquie_candidate)
     
-    winner = str(uniquie_candidate[candiate_votes.index(max_votes)])
+    winner = str(unique_candidate[candidate_votes.index(max_votes)])
     printing("-------------------------------")
     printing("Winner: " + winner)
     printing("-------------------------------")
